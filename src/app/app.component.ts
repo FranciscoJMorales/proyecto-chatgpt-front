@@ -41,16 +41,19 @@ export class AppComponent {
         message: value.prompt.trim(),
         time: this.getCurrentTime()
       });
-      const result : any = await this.chatGptService.chat(value.prompt);
-      console.log(result);
-      this.chat.push({
+      const response = {
         class: "",
         user: false,
         sender: "ChatGPT",
         photo: "./assets/images/users/1.jpg",
-        message: result.message,
-        time: this.getCurrentTime()
-      });
+        message: '[wait]',
+        time: ""
+      };
+      this.chat.push(response);
+      const result : any = await this.chatGptService.chat(value.prompt.trim());
+      console.log(result);
+      response.message = result.message;
+      response.time = this.getCurrentTime();
     }
   }
 
