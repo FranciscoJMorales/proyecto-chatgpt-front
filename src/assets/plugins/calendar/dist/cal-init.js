@@ -131,49 +131,27 @@
         var today = new Date($.now());
 
         var defaultEvents =  [{
-                title: 'Released Ample Admin!',
-                start: new Date($.now() + 506800000),
-                className: 'bg-info'
-            }, {
-                title: 'This is today check date',
+                title: 'Hoy',
                 start: today,
                 end: today,
                 className: 'bg-danger'
             }, {
-                title: 'This is your birthday',
-                start: new Date($.now() + 848000000),
+                title: 'Elecciones Primera Vuelta 2023',
+                start: new Date("2023-06-25T06:00:00"),
+                end: new Date("2023-06-25T18:00:00"),
                 className: 'bg-info'
             },{
-                title: 'your meeting with john',
-                start: new Date($.now() - 1099000000),
-                end:  new Date($.now() - 919000000),
-                className: 'bg-warning'
-            },{
-                title: 'your meeting with john',
-                start: new Date($.now() - 1199000000),
-                end: new Date($.now() - 1199000000),
-                className: 'bg-purple'
-            },{
-                title: 'your meeting with john',
-                start: new Date($.now() - 399000000),
-                end: new Date($.now() - 219000000),
+                title: 'Elecciones Segunda Vuelta 2023',
+                start: new Date("2023-08-20T06:00:00"),
+                end: new Date("2023-08-20T18:00:00"),
                 className: 'bg-info'
-            },  
-              {
-                title: 'Hanns birthday',
-                start: new Date($.now() + 868000000),
-                className: 'bg-danger'
-            },{
-                title: 'Like it?',
-                start: new Date($.now() + 348000000),
-                className: 'bg-success'
             }];
 
         var $this = this;
         $this.$calendarObj = $this.$calendar.fullCalendar({
             slotDuration: '00:15:00', /* If we want to split day time each 15minutes */
-            minTime: '08:00:00',
-            maxTime: '19:00:00',  
+            minTime: '00:00:00',
+            maxTime: '24:00:00',  
             defaultView: 'month',  
             handleWindowResize: true,   
              
@@ -183,10 +161,10 @@
                 right: 'month,agendaWeek,agendaDay'
             },
             events: defaultEvents,
-            editable: true,
-            droppable: true, // this allows things to be dropped onto the calendar !!!
+            editable: false,
+            droppable: false, // this allows things to be dropped onto the calendar !!!
             eventLimit: true, // allow "more" link when too many events
-            selectable: true,
+            selectable: false,
             drop: function(date) { $this.onDrop($(this), date); },
             select: function (start, end, allDay) { $this.onSelect(start, end, allDay); },
             eventClick: function(calEvent, jsEvent, view) { $this.onEventClick(calEvent, jsEvent, view); }
